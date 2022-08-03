@@ -45,6 +45,35 @@ paths:
         400:
           description: Error
           content: {}
+    get:
+      tags:
+      - Students
+      summary: Get a list of students
+      operationId: Students
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+            format: int32
+        - name: page_size
+          in: query
+          schema:
+            type: integer
+            format: int64
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Students'
+        400:
+          description: Error
+          content: {}
+              
 components:
   schemas:
     Students:
