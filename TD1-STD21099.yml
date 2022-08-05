@@ -16,9 +16,7 @@ paths:
         content:
           application/json:
             schema:
-              type: array
-              items:
-                $ref: '#/components/schemas/CreateStudent'
+              $ref: '#/components/schemas/CreateStudent'
         required: true
       responses:
         200:
@@ -65,17 +63,13 @@ paths:
       - Students
       summary: Delete some students
       operationId: deleteStudents
-      requestBody:
+      parameters:
+      - name: id
+        in: path
         required: true
-        content:
-          application/json:
-            schema:
-              type: array
-              items:
-                type: object 
-                properties:
-                  id:
-                    type: integer
+        schema:
+          type: integer
+          format: int64
       responses:
         200:
           description: Success
@@ -122,6 +116,9 @@ paths:
       responses:
         200:
           description: sucsses
+          content:
+            text/plain:
+              example: Returns the id of the deleted student
         400:
           description: Bad request
     put:
@@ -173,7 +170,7 @@ paths:
               changeName:
                 summary: Change name
                 value:
-                  name : 'New name'
+                  name : New name
               changeGroup:
                 summary: Change group
                 value:
@@ -427,6 +424,9 @@ components:
         group:
           type: string
           example: G3
+        id:
+          type: integer
+          format: integer
     CreateCourse:
       type: object
       properties:
