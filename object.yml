@@ -73,7 +73,28 @@ paths:
         400:
           description: Error
           content: {}
-              
+  /Students/{id}:       
+    get:
+      tags:
+      - Students
+      summary: Get the specified student
+      operationId: Students
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/Students'
+        400:
+          description: Bad Request
+          content: {}     
 components:
   schemas:
     Students:
