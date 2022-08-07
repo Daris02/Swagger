@@ -65,7 +65,7 @@ paths:
       operationId: deleteStudents
       parameters:
       - name: id
-        in: path
+        in: query
         required: true
         schema:
           type: integer
@@ -340,12 +340,6 @@ paths:
         400:
           description: Bad request
 
-
-      security:
-      - petstore_auth:
-        - write:pets
-        - read:pets
-      x-codegen-request-body-name: body
   /groups/{id}:
     get:
       tags:
