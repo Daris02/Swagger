@@ -1,3 +1,3 @@
 # Swagger 
 
-### link for TD1 : [swagger OpenAPI - TD1](http://STD21099.io/)
+### link for TD1 : [swagger OpenAPI - TD1](TD1-STD21099.yml)
