@@ -1,7 +1,10 @@
-openapi: 3.0.1
+openapi: "3.0.2"
 info:
   title: STD21099
+  description: API for Student (TD1)
   version: 1.0.0
+  contact:
+    email: hei.raymond.2@gmail.com
 servers:
 - url: http://STD21099.io/
 paths:
@@ -309,6 +312,45 @@ paths:
                   $ref: '#/components/schemas/CreateCourse'
         400:
           description: Bad request
+    patch:
+      tags:
+      - Courses
+      summary: Change some details of courses by ID
+      description: "Possible changes on : name & teacher & date"
+      operationId: pathStudentID
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCourse'
+            examples:
+              changeName:
+                summary: Change name
+                value:
+                  name : New name
+              changeTeacher:
+                summary: Change teacher
+                value:
+                  name : Toky Ramarozaka
+              changeDate: 
+                summary: Change date
+                value: date-time
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/CreateCourse'
+        400:
+          description: Bad request
   /groups:
     get:
       tags:
@@ -430,7 +472,7 @@ components:
         teacher:
           type: string
           example: Tokimahery Ramarozaka
-        createdDatetime:
+        Datetime:
           type: string
           format: date-time
     Course:
@@ -444,7 +486,7 @@ components:
         teacher:
           type: string
           example: Tokimahery Ramarozaka
-        createdDatetime:
+        Datetime:
           type: string
           format: date-time
     Students:
@@ -480,15 +522,3 @@ components:
         id:
           type: integer
           format: int64
-    error400:
-      required:
-      - type
-      - message
-      type: object
-      properties:
-        type:
-          type: string
-          example: BadRequestException
-        group:
-          type: string
-          example: Bad request
